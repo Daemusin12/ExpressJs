@@ -11,4 +11,5 @@ function comparePassword(raw, hash) {
 
 module.exports = {
     hashPassword,
+    comparePassword,
 };
