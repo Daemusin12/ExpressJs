@@ -1,12 +1,12 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const passport = require('passport')
-
+const passport = require('passport');
+require('./strategies/local');
 //routers
 const groceriesRoute = require('./routes/groceries');
 const marketRoute = require('./routes/market');
-const authRoute = require('./routes/auth')
+const authRoute = require('./routes/auth');
 
 require('./database')
 
