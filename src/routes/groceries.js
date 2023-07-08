@@ -2,8 +2,10 @@ const { Router, response } = require('express');
 
 const router = Router();
 
-router.use((req, res, next) =>{
-    if (req.session.user) next ();
+router.use((req, res, next) => {
+    console.log('Inside Groceries Auth Check Middleware');
+    console.log(req.user)
+    if (req.user) next ();
     else {
         res.send(401);
     }
