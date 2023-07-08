@@ -12,6 +12,7 @@ require('./database')
 
 const app = express();
 const PORT = 3001;
+const memoryStore = new session.MemoryStore();
 
 app.use(express.json());
 
@@ -21,6 +22,7 @@ app.use(
         secret: 'HOTDOG',
         resave: false,
         saveUninitialized: false,
+        store: memoryStore
     })
 );
 
@@ -28,6 +30,11 @@ app.use((req, res, next) =>{
     console.log(`${req.method}:${req.url}`);
     next();
 });
+
+app.use((req, res, next) => {
+    console.log(memoryStore);
+    next();
+})
 
 app.use((passport.initialize()));
 app.use(passport.session());
